@@ -75,4 +75,34 @@ public class VarastoTest {
         varasto = new Varasto(-1,-1);
         varasto.toString();
     }
+    @Test
+    public void liikaaOttaminenToimii(){
+        varasto.lisaaVarastoon(5);
+        assertEquals(5,varasto.otaVarastosta(200), vertailuTarkkuus);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    @Test
+    public void laitaLiikaa() {
+        varasto.lisaaVarastoon(15);
+        assertEquals(varasto.getTilavuus(), varasto.getSaldo(), vertailuTarkkuus);
+    }
+    @Test
+    public void lisataanKiltisti() {
+        varasto.lisaaVarastoon(5);
+        varasto.lisaaVarastoon(3);
+        assertEquals(8,varasto.getSaldo(), vertailuTarkkuus);
+    }
+    @Test
+    public void otetaanNegatiivisesti() { //Liikevaihtoa se on negatiivinen voittokin.
+        varasto.lisaaVarastoon(5);
+        assertEquals(0, varasto.otaVarastosta(-5), vertailuTarkkuus);
+        assertEquals(5, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void lisataanNegatiivisesti() {
+        varasto.lisaaVarastoon(5);
+        varasto.lisaaVarastoon(-5);
+        assertEquals(5,varasto.getSaldo(), vertailuTarkkuus);
+    }
 }
