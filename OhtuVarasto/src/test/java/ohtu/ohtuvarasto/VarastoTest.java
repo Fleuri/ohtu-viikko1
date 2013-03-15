@@ -79,7 +79,7 @@ public class VarastoTest {
     public void liikaaOttaminenToimii(){
         varasto.lisaaVarastoon(5);
         assertEquals(5,varasto.otaVarastosta(200), vertailuTarkkuus);
-        assertEquals(1, varasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
     }
     @Test
     public void laitaLiikaa() {
